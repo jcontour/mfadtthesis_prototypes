@@ -1,0 +1,49 @@
+@import url(https://fonts.googleapis.com/css?family=Knewave|Quicksand:300);
+
+html, body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	background-image: url("kanye.gif");
+	background-size: 50%;
+	background-repeat: none;
+}
+
+#map { 
+	height: 100%; 
+	width: 50%;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#title{
+	width: 50%;
+	position: relative;
+	float: left;
+	font-family: Knewave;
+	font-size: 5em;
+	text-align: center;
+	margin: 1em 0 .25em 0;
+	color: white;
+}
+
+#direction {
+	position: relative;
+	float: left;
+	clear: left;
+	padding: 2em 0 0 8vw;
+	display: inline-block;
+}
+
+#coordinates {
+	font-family: Quicksand;
+	color: red;
+	font-size: 7em;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#arrow {
+	float: left;
+}
