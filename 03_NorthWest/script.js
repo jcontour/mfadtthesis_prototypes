@@ -18,37 +18,28 @@ app.main = (function() {
 
   };
 
-  var getLocation = function(){
-    console.log('getting location');
-
-    // user = {
-    //   lat: 40.737025,
-    //   lng: -73.992143
-    // };
-
-    if (navigator.geolocation) {
-      console.log(navigator.geolocation);
-      navigator.geolocation.getCurrentPosition(function(position) {
-        user = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        console.log(user);
-        map.setCenter(user);
-      });
-    } else {
-        handleLocationError();
+  var updateLocation = function(position) {
+    user = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
     };
+    console.log("lat: " + user.lat + " lng: " + user.lng);
+    initMap();
+    map.setCenter(user);
+    makeMarkers(user);
+  };
 
-    // initMap();
-    // map.setCenter(user);
+  var getLocation = function(){
+    navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
+  }
 
+  var makeMarkers = function(user){
     var userMarker = new google.maps.Marker({
       position: user,
       map: map,
     });
 
-    //creating an image object to use as icon
+    // creating an image object to use as icon
     var image = {
       url: 'nwIcon.png',
       size: new google.maps.Size(30, 35),
@@ -71,9 +62,9 @@ app.main = (function() {
     findNW(user, northwest);
   }
 
-  // function handleLocationError() {
-  //   console.log("location not found");
-  // }
+  function handleLocationError() {
+    console.log("location not found");
+  }
 
   var showDirection = function(angle, coordinates){
     console.log("turning arrow");
@@ -124,7 +115,7 @@ app.main = (function() {
     init: init,
     getLocation: getLocation,
     initMap: initMap,
-    //findNW: findNW
+    findNW: findNW
   };
 
 })();

@@ -6,7 +6,7 @@ html, body {
 	padding: 0; 
 	background-image: url("kanye.gif");
 	background-size: 50%;
-	background-repeat: none;
+	background-repeat: no-repeat;
 }
 
 #map { 
